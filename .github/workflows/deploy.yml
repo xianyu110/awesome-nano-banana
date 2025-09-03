@@ -44,14 +44,15 @@ jobs:
 
       - name: Create case data JSON
         run: |
-          # Create a simple script to generate case data JSON
+          cd gen-tool
+          # Create a simple script to generate case data JSON within gen-tool directory
           cat > generate-cases.mjs << 'EOF'
           import fs from 'fs';
           import path from 'path';
           import yaml from 'js-yaml';
 
-          const casesDir = path.join(process.cwd(), 'cases');
-          const outputFile = path.join(process.cwd(), 'cases-data.json');
+          const casesDir = path.join(process.cwd(), '..', 'cases');
+          const outputFile = path.join(process.cwd(), '..', 'cases-data.json');
 
           function loadCaseData(caseId) {
             try {
@@ -118,8 +119,7 @@ jobs:
           console.log(`Generated data for ${cases.length} cases`);
           EOF
 
-          cd gen-tool
-          node ../generate-cases.mjs
+          node generate-cases.mjs
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
