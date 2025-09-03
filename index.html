@@ -19,32 +19,32 @@
                     Awesome Nano Banana Images
                     <span class="emoji">✨</span>
                 </h1>
-                <p class="hero-subtitle">精选的Gemini图像生成案例合集</p>
-                <p class="hero-description">
+                <p class="hero-subtitle" data-i18n="hero.subtitle">精选的Gemini图像生成案例合集</p>
+                <p class="hero-description" data-i18n="hero.description">
                     借助Google的Gemini模型，展示AI图像生成与编辑的先进能力，为您的创意创作提供灵感！
                 </p>
                 <div class="hero-stats">
                     <div class="stat-item">
                         <span class="stat-number" id="case-count">100+</span>
-                        <span class="stat-label">精选案例</span>
+                        <span class="stat-label" data-i18n="hero.stats.cases">精选案例</span>
                     </div>
                     <div class="stat-item">
                         <span class="stat-number">2</span>
-                        <span class="stat-label">AI模型对比</span>
+                        <span class="stat-label" data-i18n="hero.stats.models">AI模型对比</span>
                     </div>
                     <div class="stat-item">
                         <span class="stat-number" id="contributor-count">10+</span>
-                        <span class="stat-label">贡献者</span>
+                        <span class="stat-label" data-i18n="hero.stats.contributors">贡献者</span>
                     </div>
                 </div>
                 <div class="hero-actions">
                     <a href="#cases" class="btn btn-primary">
                         <i class="fas fa-images"></i>
-                        浏览案例
+                        <span data-i18n="hero.actions.browse">浏览案例</span>
                     </a>
                     <a href="https://github.com/xianyu110/awesome-nano-banana" class="btn btn-secondary" target="_blank">
                         <i class="fab fa-github"></i>
-                        GitHub仓库
+                        <span data-i18n="hero.actions.github">GitHub仓库</span>
                     </a>
                 </div>
             </div>
@@ -59,10 +59,25 @@
                 Nano Banana
             </div>
             <div class="nav-links">
-                <a href="#home" class="nav-link active">首页</a>
-                <a href="#cases" class="nav-link">案例展示</a>
-                <a href="#about" class="nav-link">关于</a>
-                <a href="#contribute" class="nav-link">贡献</a>
+                <a href="#home" class="nav-link active" data-i18n="nav.home">首页</a>
+                <a href="#cases" class="nav-link" data-i18n="nav.cases">案例展示</a>
+                <a href="#about" class="nav-link" data-i18n="nav.about">关于</a>
+                <a href="#contribute" class="nav-link" data-i18n="nav.contribute">贡献</a>
+            </div>
+            <div class="nav-controls">
+                <div class="theme-toggle">
+                    <button id="theme-toggle" class="theme-btn" aria-label="Toggle theme">
+                        <i class="fas fa-sun"></i>
+                    </button>
+                </div>
+                <div class="language-selector">
+                    <select id="language-select" aria-label="Select language">
+                        <option value="zh">中文</option>
+                        <option value="en">English</option>
+                        <option value="ja">日本語</option>
+                        <option value="ko">한국어</option>
+                    </select>
+                </div>
             </div>
             <div class="nav-toggle">
                 <span></span>
@@ -80,9 +95,9 @@
                 <div class="section-header">
                     <h2 class="section-title">
                         <i class="fas fa-palette"></i>
-                        精选案例
+                        <span data-i18n="cases.title">精选案例</span>
                     </h2>
-                    <p class="section-description">
+                    <p class="section-description" data-i18n="cases.description">
                         探索各种创意应用场景，从Q版插画到3D渲染，从风格转换到创意合成
                     </p>
                 </div>
@@ -90,25 +105,25 @@
                 <!-- Filter Controls -->
                 <div class="filter-controls">
                     <div class="filter-group">
-                        <label for="category-filter">分类：</label>
+                        <label for="category-filter" data-i18n="filter.category">分类：</label>
                         <select id="category-filter">
-                            <option value="all">全部案例</option>
-                            <option value="3d">3D渲染</option>
-                            <option value="anime">动漫风格</option>
-                            <option value="realistic">写实风格</option>
-                            <option value="creative">创意合成</option>
+                            <option value="all" data-i18n="filter.all">全部案例</option>
+                            <option value="3d" data-i18n="filter.3d">3D渲染</option>
+                            <option value="anime" data-i18n="filter.anime">动漫风格</option>
+                            <option value="realistic" data-i18n="filter.realistic">写实风格</option>
+                            <option value="creative" data-i18n="filter.creative">创意合成</option>
                         </select>
                     </div>
                     <div class="filter-group">
-                        <label for="sort-filter">排序：</label>
+                        <label for="sort-filter" data-i18n="filter.sort">排序：</label>
                         <select id="sort-filter">
-                            <option value="newest">最新优先</option>
-                            <option value="oldest">最早优先</option>
-                            <option value="popular">热门优先</option>
+                            <option value="newest" data-i18n="sort.newest">最新优先</option>
+                            <option value="oldest" data-i18n="sort.oldest">最早优先</option>
+                            <option value="popular" data-i18n="sort.popular">热门优先</option>
                         </select>
                     </div>
                     <div class="search-group">
-                        <input type="text" id="search-input" placeholder="搜索案例...">
+                        <input type="text" id="search-input" placeholder="搜索案例..." data-i18n-placeholder="search.placeholder">
                         <i class="fas fa-search"></i>
                     </div>
                 </div>
@@ -122,7 +137,7 @@
                 <div class="load-more-container">
                     <button id="load-more-btn" class="btn btn-outline">
                         <i class="fas fa-plus"></i>
-                        加载更多
+                        <span data-i18n="load.more">加载更多</span>
                     </button>
                 </div>
             </div>
@@ -180,7 +195,7 @@
                         <div class="step-number">1</div>
                         <h3>提交案例</h3>
                         <p>分享您使用AI工具创作的优秀作品</p>
-                        <a href="https://github.com/JimmyLv/awesome-nano-banana/issues/new" class="btn btn-sm" target="_blank">
+                        <a href="https://github.com/xianyu110/awesome-nano-banana/issues/new" class="btn btn-sm" target="_blank">
                             快速提交
                         </a>
                     </div>
@@ -188,7 +203,7 @@
                         <div class="step-number">2</div>
                         <h3>创建PR</h3>
                         <p>按照模板格式准备案例文件并提交Pull Request</p>
-                        <a href="https://github.com/JimmyLv/awesome-nano-banana/pulls" class="btn btn-sm" target="_blank">
+                        <a href="https://github.com/xianyu110/awesome-nano-banana/pulls" class="btn btn-sm" target="_blank">
                             查看PR
                         </a>
                     </div>
@@ -196,7 +211,7 @@
                         <div class="step-number">3</div>
                         <h3>社区讨论</h3>
                         <p>参与讨论、分享经验、互相启发</p>
-                        <a href="https://github.com/JimmyLv/awesome-nano-banana/discussions" class="btn btn-sm" target="_blank">
+                        <a href="https://github.com/xianyu110/awesome-nano-banana/discussions" class="btn btn-sm" target="_blank">
                             开始讨论
                         </a>
                     </div>
@@ -213,7 +228,7 @@
                     <h4>Awesome Nano Banana</h4>
                     <p>精选的AI图像生成案例合集，展示Gemini模型的强大能力</p>
                     <div class="social-links">
-                        <a href="https://github.com/JimmyLv/awesome-nano-banana" target="_blank">
+                        <a href="https://github.com/xianyu110/awesome-nano-banana" target="_blank">
                             <i class="fab fa-github"></i>
                         </a>
                         <a href="https://x.com" target="_blank">
@@ -234,7 +249,7 @@
                     <h4>推荐工具</h4>
                     <ul>
                         <li><a href="https://chatimg.ai" target="_blank">ChatIMG.ai</a></li>
-                        <li><a href="https://github.com/JimmyLv/awesome-nano-banana" target="_blank">GitHub仓库</a></li>
+                        <li><a href="https://github.com/xianyu110/awesome-nano-banana" target="_blank">GitHub仓库</a></li>
                     </ul>
                 </div>
             </div>

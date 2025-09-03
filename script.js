@@ -4,6 +4,120 @@ let filteredCases = [];
 let currentPage = 1;
 let casesPerPage = 12;
 let isLoading = false;
+let currentLanguage = 'zh';
+let currentTheme = 'dark'; // 默认黑暗主题
+
+// 多语言文本
+const translations = {
+    zh: {
+        'nav.home': '首页',
+        'nav.cases': '案例展示',
+        'nav.about': '关于',
+        'nav.contribute': '贡献',
+        'hero.subtitle': '精选的Gemini图像生成案例合集',
+        'hero.description': '借助Google的Gemini模型，展示AI图像生成与编辑的先进能力，为您的创意创作提供灵感！',
+        'hero.stats.cases': '精选案例',
+        'hero.stats.models': 'AI模型对比',
+        'hero.stats.contributors': '贡献者',
+        'hero.actions.browse': '浏览案例',
+        'hero.actions.github': 'GitHub仓库',
+        'cases.title': '精选案例',
+        'cases.description': '探索各种创意应用场景，从Q版插画到3D渲染，从风格转换到创意合成',
+        'filter.category': '分类：',
+        'filter.all': '全部案例',
+        'filter.3d': '3D渲染',
+        'filter.anime': '动漫风格',
+        'filter.realistic': '写实风格',
+        'filter.creative': '创意合成',
+        'filter.sort': '排序：',
+        'sort.newest': '最新优先',
+        'sort.oldest': '最早优先',
+        'sort.popular': '热门优先',
+        'search.placeholder': '搜索案例...',
+        'load.more': '加载更多'
+    },
+    en: {
+        'nav.home': 'Home',
+        'nav.cases': 'Cases',
+        'nav.about': 'About',
+        'nav.contribute': 'Contribute',
+        'hero.subtitle': 'Curated collection of Gemini image generation cases',
+        'hero.description': 'Powered by Google\'s Gemini model, showcasing advanced AI image generation and editing capabilities to inspire your creative work!',
+        'hero.stats.cases': 'Featured Cases',
+        'hero.stats.models': 'AI Model Comparison',
+        'hero.stats.contributors': 'Contributors',
+        'hero.actions.browse': 'Browse Cases',
+        'hero.actions.github': 'GitHub Repo',
+        'cases.title': 'Featured Cases',
+        'cases.description': 'Explore various creative application scenarios, from Q-version illustrations to 3D rendering, from style conversion to creative synthesis',
+        'filter.category': 'Category:',
+        'filter.all': 'All Cases',
+        'filter.3d': '3D Rendering',
+        'filter.anime': 'Anime Style',
+        'filter.realistic': 'Realistic Style',
+        'filter.creative': 'Creative Synthesis',
+        'filter.sort': 'Sort:',
+        'sort.newest': 'Newest First',
+        'sort.oldest': 'Oldest First',
+        'sort.popular': 'Most Popular',
+        'search.placeholder': 'Search cases...',
+        'load.more': 'Load More'
+    },
+    ja: {
+        'nav.home': 'ホーム',
+        'nav.cases': 'ケース',
+        'nav.about': '概要',
+        'nav.contribute': '貢献',
+        'hero.subtitle': 'Gemini画像生成ケースの厳選コレクション',
+        'hero.description': 'GoogleのGeminiモデルを活用し、AI画像生成・編集の先進機能を紹介。創造的な作業にインスピレーションを提供！',
+        'hero.stats.cases': '注目ケース',
+        'hero.stats.models': 'AIモデル比較',
+        'hero.stats.contributors': '貢献者',
+        'hero.actions.browse': 'ケースを見る',
+        'hero.actions.github': 'GitHubリポジトリ',
+        'cases.title': '注目ケース',
+        'cases.description': 'Q版イラストから3Dレンダリング、スタイル変換から創造的合成まで、様々な創造的応用シナリオを探索',
+        'filter.category': 'カテゴリ：',
+        'filter.all': '全ケース',
+        'filter.3d': '3Dレンダリング',
+        'filter.anime': 'アニメスタイル',
+        'filter.realistic': 'リアルスタイル',
+        'filter.creative': '創造的合成',
+        'filter.sort': 'ソート：',
+        'sort.newest': '最新順',
+        'sort.oldest': '古い順',
+        'sort.popular': '人気順',
+        'search.placeholder': 'ケースを検索...',
+        'load.more': 'もっと読み込む'
+    },
+    ko: {
+        'nav.home': '홈',
+        'nav.cases': '케이스',
+        'nav.about': '소개',
+        'nav.contribute': '기여',
+        'hero.subtitle': 'Gemini 이미지 생성 케이스 엄선 컬렉션',
+        'hero.description': 'Google의 Gemini 모델을 활용하여 AI 이미지 생성 및 편집의 고급 기능을 보여주며, 창의적인 작업에 영감을 제공합니다!',
+        'hero.stats.cases': '주요 케이스',
+        'hero.stats.models': 'AI 모델 비교',
+        'hero.stats.contributors': '기여자',
+        'hero.actions.browse': '케이스 둘러보기',
+        'hero.actions.github': 'GitHub 저장소',
+        'cases.title': '주요 케이스',
+        'cases.description': 'Q버전 일러스트부터 3D 렌더링, 스타일 변환부터 창의적 합성까지 다양한 창의적 응용 시나리오 탐색',
+        'filter.category': '카테고리:',
+        'filter.all': '모든 케이스',
+        'filter.3d': '3D 렌더링',
+        'filter.anime': '애니메 스타일',
+        'filter.realistic': '사실적 스타일',
+        'filter.creative': '창의적 합성',
+        'filter.sort': '정렬:',
+        'sort.newest': '최신순',
+        'sort.oldest': '오래된순',
+        'sort.popular': '인기순',
+        'search.placeholder': '케이스 검색...',
+        'load.more': '더 보기'
+    }
+};
 
 // DOM 元素
 const casesGrid = document.getElementById('cases-grid');
@@ -19,6 +133,12 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function initApp() {
+    // 初始化主题
+    initTheme();
+
+    // 初始化语言
+    initLanguage();
+
     // 加载案例数据
     loadCases();
 
@@ -261,6 +381,18 @@ function setupEventListeners() {
 
     // 加载更多
     loadMoreBtn.addEventListener('click', loadMoreCases);
+
+    // 主题切换
+    const themeToggle = document.getElementById('theme-toggle');
+    if (themeToggle) {
+        themeToggle.addEventListener('click', toggleTheme);
+    }
+
+    // 语言切换
+    const languageSelect = document.getElementById('language-select');
+    if (languageSelect) {
+        languageSelect.addEventListener('change', changeLanguage);
+    }
 
     // 导航切换（移动端）
     const navToggle = document.querySelector('.nav-toggle');
@@ -519,6 +651,135 @@ function debounce(func, wait) {
         clearTimeout(timeout);
         timeout = setTimeout(later, wait);
     };
+}
+
+// 主题切换功能
+function initTheme() {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        currentTheme = savedTheme;
+    }
+    applyTheme();
+}
+
+function toggleTheme() {
+    currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    localStorage.setItem('theme', currentTheme);
+    applyTheme();
+}
+
+function applyTheme() {
+    const body = document.body;
+    const themeIcon = document.querySelector('#theme-toggle i');
+    
+    if (currentTheme === 'light') {
+        body.classList.add('light-theme');
+        if (themeIcon) {
+            themeIcon.className = 'fas fa-moon';
+        }
+    } else {
+        body.classList.remove('light-theme');
+        if (themeIcon) {
+            themeIcon.className = 'fas fa-sun';
+        }
+    }
+}
+
+// 语言切换功能
+function initLanguage() {
+    const savedLanguage = localStorage.getItem('language');
+    if (savedLanguage && translations[savedLanguage]) {
+        currentLanguage = savedLanguage;
+    }
+    
+    const languageSelect = document.getElementById('language-select');
+    if (languageSelect) {
+        languageSelect.value = currentLanguage;
+    }
+    
+    updateLanguage();
+}
+
+function changeLanguage(event) {
+    const newLanguage = event.target.value;
+    if (translations[newLanguage]) {
+        currentLanguage = newLanguage;
+        localStorage.setItem('language', currentLanguage);
+        updateLanguage();
+    }
+}
+
+function updateLanguage() {
+    // 更新页面语言属性
+    document.documentElement.lang = currentLanguage === 'zh' ? 'zh-CN' : currentLanguage;
+    
+    // 更新所有带有 data-i18n 属性的元素
+    const elementsToTranslate = document.querySelectorAll('[data-i18n]');
+    elementsToTranslate.forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        if (translations[currentLanguage] && translations[currentLanguage][key]) {
+            element.textContent = translations[currentLanguage][key];
+        }
+    });
+    
+    // 更新搜索框占位符
+    const searchInput = document.getElementById('search-input');
+    if (searchInput && translations[currentLanguage]['search.placeholder']) {
+        searchInput.placeholder = translations[currentLanguage]['search.placeholder'];
+    }
+    
+    // 更新选择框选项
+    updateSelectOptions();
+}
+
+function updateSelectOptions() {
+    // 更新分类过滤器选项
+    const categoryFilter = document.getElementById('category-filter');
+    if (categoryFilter) {
+        const options = categoryFilter.querySelectorAll('option');
+        options.forEach(option => {
+            const value = option.value;
+            let key;
+            switch (value) {
+                case 'all': key = 'filter.all'; break;
+                case '3d': key = 'filter.3d'; break;
+                case 'anime': key = 'filter.anime'; break;
+                case 'realistic': key = 'filter.realistic'; break;
+                case 'creative': key = 'filter.creative'; break;
+            }
+            if (key && translations[currentLanguage][key]) {
+                option.textContent = translations[currentLanguage][key];
+            }
+        });
+    }
+    
+    // 更新排序过滤器选项
+    const sortFilter = document.getElementById('sort-filter');
+    if (sortFilter) {
+        const options = sortFilter.querySelectorAll('option');
+        options.forEach(option => {
+            const value = option.value;
+            let key;
+            switch (value) {
+                case 'newest': key = 'sort.newest'; break;
+                case 'oldest': key = 'sort.oldest'; break;
+                case 'popular': key = 'sort.popular'; break;
+            }
+            if (key && translations[currentLanguage][key]) {
+                option.textContent = translations[currentLanguage][key];
+            }
+        });
+    }
+    
+    // 更新加载更多按钮
+    const loadMoreBtn = document.getElementById('load-more-btn');
+    if (loadMoreBtn && translations[currentLanguage]['load.more']) {
+        const span = loadMoreBtn.querySelector('span') || loadMoreBtn;
+        const textNode = Array.from(span.childNodes).find(node => node.nodeType === Node.TEXT_NODE);
+        if (textNode) {
+            textNode.textContent = translations[currentLanguage]['load.more'];
+        }
+    }
 }
 
 // 页面加载完成后初始化
