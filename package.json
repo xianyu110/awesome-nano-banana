@@ -1,0 +1,33 @@
+{
+  "name": "awesome-nano-banana-pages",
+  "version": "1.0.0",
+  "description": "GitHub Pages version of Awesome Nano Banana Images",
+  "main": "index.html",
+  "scripts": {
+    "start": "node preview.js",
+    "preview": "node preview.js",
+    "generate-data": "node generate-cases.js",
+    "build": "cd gen-tool && npm run generate && cd .. && npm run generate-data",
+    "deploy": "echo 'Push to main branch to trigger GitHub Actions deployment'"
+  },
+  "keywords": [
+    "ai",
+    "gemini",
+    "nano-banana",
+    "image-generation",
+    "github-pages"
+  ],
+  "author": "Awesome Nano Banana Community",
+  "license": "CC-BY-4.0",
+  "dependencies": {
+    "js-yaml": "^4.1.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JimmyLv/awesome-nano-banana"
+  },
+  "homepage": "https://jimmylv.github.io/awesome-nano-banana"
+}

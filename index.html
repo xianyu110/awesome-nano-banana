@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Awesome 🍌 Nano Banana Images ✨</title>
+    <meta name="description" content="精选的Gemini图像生成案例合集，展示AI图像生成与编辑的先进能力">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍌</text></svg>">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="emoji">🍌</span>
+                    Awesome Nano Banana Images
+                    <span class="emoji">✨</span>
+                </h1>
+                <p class="hero-subtitle">精选的Gemini图像生成案例合集</p>
+                <p class="hero-description">
+                    借助Google的Gemini模型，展示AI图像生成与编辑的先进能力，为您的创意创作提供灵感！
+                </p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" id="case-count">100+</span>
+                        <span class="stat-label">精选案例</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">2</span>
+                        <span class="stat-label">AI模型对比</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="contributor-count">10+</span>
+                        <span class="stat-label">贡献者</span>
+                    </div>
+                </div>
+                <div class="hero-actions">
+                    <a href="#cases" class="btn btn-primary">
+                        <i class="fas fa-images"></i>
+                        浏览案例
+                    </a>
+                    <a href="https://github.com/JimmyLv/awesome-nano-banana" class="btn btn-secondary" target="_blank">
+                        <i class="fab fa-github"></i>
+                        GitHub仓库
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <span class="emoji">🍌</span>
+                Nano Banana
+            </div>
+            <div class="nav-links">
+                <a href="#home" class="nav-link active">首页</a>
+                <a href="#cases" class="nav-link">案例展示</a>
+                <a href="#about" class="nav-link">关于</a>
+                <a href="#contribute" class="nav-link">贡献</a>
+            </div>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Cases Section -->
+        <section id="cases" class="cases-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <i class="fas fa-palette"></i>
+                        精选案例
+                    </h2>
+                    <p class="section-description">
+                        探索各种创意应用场景，从Q版插画到3D渲染，从风格转换到创意合成
+                    </p>
+                </div>
+
+                <!-- Filter Controls -->
+                <div class="filter-controls">
+                    <div class="filter-group">
+                        <label for="category-filter">分类：</label>
+                        <select id="category-filter">
+                            <option value="all">全部案例</option>
+                            <option value="3d">3D渲染</option>
+                            <option value="anime">动漫风格</option>
+                            <option value="realistic">写实风格</option>
+                            <option value="creative">创意合成</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="sort-filter">排序：</label>
+                        <select id="sort-filter">
+                            <option value="newest">最新优先</option>
+                            <option value="oldest">最早优先</option>
+                            <option value="popular">热门优先</option>
+                        </select>
+                    </div>
+                    <div class="search-group">
+                        <input type="text" id="search-input" placeholder="搜索案例...">
+                        <i class="fas fa-search"></i>
+                    </div>
+                </div>
+
+                <!-- Cases Grid -->
+                <div id="cases-grid" class="cases-grid">
+                    <!-- Cases will be loaded here dynamically -->
+                </div>
+
+                <!-- Load More Button -->
+                <div class="load-more-container">
+                    <button id="load-more-btn" class="btn btn-outline">
+                        <i class="fas fa-plus"></i>
+                        加载更多
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <i class="fas fa-info-circle"></i>
+                        关于Nano Banana
+                    </h2>
+                </div>
+                <div class="about-grid">
+                    <div class="about-card">
+                        <div class="about-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>Gemini模型</h3>
+                        <p>Google推出的革命性AI图像编辑模型，代表从"AI绘画工具"到"AI创意伙伴"的范式转移</p>
+                    </div>
+                    <div class="about-card">
+                        <div class="about-icon">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <h3>创意无限</h3>
+                        <p>支持上下文感知编辑、3D理解、风格一致性等多种先进功能</p>
+                    </div>
+                    <div class="about-card">
+                        <div class="about-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>社区驱动</h3>
+                        <p>汇聚全球创作者的优秀作品，共同探索AI创作的新可能</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contribute Section -->
+        <section id="contribute" class="contribute-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <i class="fas fa-hand-holding-heart"></i>
+                        如何贡献
+                    </h2>
+                    <p class="section-description">
+                        欢迎加入我们的社区，一起丰富这个AI创作案例库
+                    </p>
+                </div>
+                <div class="contribute-grid">
+                    <div class="contribute-step">
+                        <div class="step-number">1</div>
+                        <h3>提交案例</h3>
+                        <p>分享您使用AI工具创作的优秀作品</p>
+                        <a href="https://github.com/JimmyLv/awesome-nano-banana/issues/new" class="btn btn-sm" target="_blank">
+                            快速提交
+                        </a>
+                    </div>
+                    <div class="contribute-step">
+                        <div class="step-number">2</div>
+                        <h3>创建PR</h3>
+                        <p>按照模板格式准备案例文件并提交Pull Request</p>
+                        <a href="https://github.com/JimmyLv/awesome-nano-banana/pulls" class="btn btn-sm" target="_blank">
+                            查看PR
+                        </a>
+                    </div>
+                    <div class="contribute-step">
+                        <div class="step-number">3</div>
+                        <h3>社区讨论</h3>
+                        <p>参与讨论、分享经验、互相启发</p>
+                        <a href="https://github.com/JimmyLv/awesome-nano-banana/discussions" class="btn btn-sm" target="_blank">
+                            开始讨论
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Awesome Nano Banana</h4>
+                    <p>精选的AI图像生成案例合集，展示Gemini模型的强大能力</p>
+                    <div class="social-links">
+                        <a href="https://github.com/JimmyLv/awesome-nano-banana" target="_blank">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://x.com" target="_blank">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="#cases">案例展示</a></li>
+                        <li><a href="#about">关于我们</a></li>
+                        <li><a href="#contribute">贡献指南</a></li>
+                        <li><a href="README.md">详细文档</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>推荐工具</h4>
+                    <ul>
+                        <li><a href="https://chatimg.ai" target="_blank">ChatIMG.ai</a></li>
+                        <li><a href="https://github.com/JimmyLv/awesome-nano-banana" target="_blank">GitHub仓库</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Awesome Nano Banana. Licensed under <a href="LICENSE">CC BY 4.0</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
