@@ -45,13 +45,13 @@ jobs:
       - name: Create case data JSON
         run: |
           # Create a simple script to generate case data JSON
-          cat > generate-cases.js << 'EOF'
-          const fs = require('fs');
-          const path = require('path');
-          const yaml = require('js-yaml');
+          cat > generate-cases.mjs << 'EOF'
+          import fs from 'fs';
+          import path from 'path';
+          import yaml from 'js-yaml';
 
-          const casesDir = path.join(__dirname, '..', 'cases');
-          const outputFile = path.join(__dirname, '..', 'cases-data.json');
+          const casesDir = path.join(process.cwd(), 'cases');
+          const outputFile = path.join(process.cwd(), 'cases-data.json');
 
           function loadCaseData(caseId) {
             try {
@@ -119,7 +119,7 @@ jobs:
           EOF
 
           cd gen-tool
-          node ../generate-cases.js
+          node ../generate-cases.mjs
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
